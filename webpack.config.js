@@ -7,7 +7,8 @@ module.exports = {
   entry: './src/app.tsx',
   output: {
     path: path.resolve('./build'),
-    filename: 'main.js'
+    filename: 'main.js',
+    clean: true,
   },
   // 폴더의 별칭 및 컴파일 순서 지정
   resolve: {
@@ -17,6 +18,7 @@ module.exports = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
+      publicPath: '/'
     },
     client: {
       overlay: true,
