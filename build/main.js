@@ -20,13 +20,13 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
 
 /***/ }),
 
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
+/***/ "./src/app.tsx":
+/*!*********************!*\
+  !*** ./src/app.tsx ***!
+  \*********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\nvar _1app_1 = __webpack_require__(/*! ./1app */ \"./src/1app.ts\");\n\nfunction aest() {\n  return \"\\n    <div>\\n      \\uD558\\uC774\\uB8FD \\uD14C\\uC2A4\\uD2B8 \\uC785\\uB2E4\\uB2E4\\n    </div>\\n  \";\n} // const a: number = '근데 텍스트가 들어가버렸넹?';\n// const b:string = 123;\n\n\nconsole.log(_1app_1[\"default\"]);\nconsole.log(\"development\");\nconsole.log(aest());\n\n//# sourceURL=webpack://development_env_setting/./src/app.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\n\nvar _1app_1 = __webpack_require__(/*! ./1app */ \"./src/1app.ts\");\n\nfunction aest() {\n  return \"\\n    <div>\\n      \\uD558\\uC774\\uB8FD \\uD14C\\uC2A4\\uD2B8 \\uC785\\uB2E4\\uB2E4\\n    </div>\\n  \";\n} // const a: number = '근데 텍스트가 들어가버렸넹?';\n// const b:string = 123;\n\n\nconsole.log(_1app_1[\"default\"]);\nconsole.log(\"development\");\nconsole.log(aest());\n\n//# sourceURL=webpack://development_env_setting/./src/app.tsx?");
 
 /***/ })
 
@@ -61,7 +61,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/app.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/app.tsx");
 /******/ 	
 /******/ })()
 ;
