@@ -15,6 +15,14 @@ module.exports = {
   },
   // Dev-sever
   devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    client: {
+      overlay: true,
+      progress: true,
+    },
+    port: 8080,
     open: {
       app: {
         name: 'google-chrome',
