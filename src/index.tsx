@@ -6,11 +6,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-console.log(App);
-
 root.render(
   <React.StrictMode>
     <App/>
   </React.StrictMode>
 );
-
