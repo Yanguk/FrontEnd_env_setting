@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const mode = process.env.NODE_ENV || 'development';
 module.exports = {
   mode,
-  entry: './src/app.tsx',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve('./build'),
     filename: 'main.js',

@@ -1,16 +1,25 @@
-import test from './1app'
+import React from 'react';
 
-function aest() {
-  return `
+function Test() {
+  return (
     <div>
       하이룽 테스트 입다다
+      하이룽 테스트 입다다
+      하이룽 테스트 입다다
+      하이룽 테스트 입다다
     </div>
-  `
+  )
 }
 
-// const a: number = '근데 텍스트가 들어가버렸넹?';
-// const b:string = 123;
+function App(): JSX.Element {
+  return (
+    <>
+    <Test/>
+    <div>
+      <h1>리액트 jsx 환경 까지 구성완료~ 타입스크립트로</h1>
+    </div>
+    </>
+  );
+}
 
-console.log(test);
-console.log(process.env.NODE_ENV);
-console.log(aest());
+export default App;
