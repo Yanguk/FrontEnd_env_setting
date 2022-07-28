@@ -17,7 +17,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    project: './tsconfig.eslint.json',
+    project: './tsconfig.json',
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
