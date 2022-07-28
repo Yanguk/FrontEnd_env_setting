@@ -1,7 +1,7 @@
 const webpackConfig = require('./webpack.config');
 const webpack = require('webpack');
 const compiler = webpack(webpackConfig);
-const webpackDevServer =require('webpack-dev-server');
+const webpackDevServer = require('webpack-dev-server');
 
 const build = () => {
   compiler.run((err, stats) => {
@@ -11,15 +11,17 @@ const build = () => {
     }
 
     console.log(stats);
-  })
+  });
 };
 
-const devServerOptions = {...webpackConfig.devServer};
+// console.log(build);
+
+const devServerOptions = { ...webpackConfig.devServer };
 const server = new webpackDevServer(devServerOptions, compiler);
 
 const runServer = async () => {
-  console.log('Starting server...')
+  console.log('Starting server...');
   await server.start();
-}
+};
 
 runServer();
