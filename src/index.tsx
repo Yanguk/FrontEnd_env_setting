@@ -10,6 +10,8 @@ console.log(
   '------------------------매우긴 문장 입니다 ------------------------------------------'
 );
 
+const test = a => console.log(a);
+console.log(test);
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

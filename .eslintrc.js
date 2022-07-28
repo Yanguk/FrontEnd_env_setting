@@ -5,12 +5,12 @@ module.exports = {
     node: true,
   },
   extends: [
-    'airbnb',
-    'airbnb-typescript',
+    // 'airbnb',
+    // 'airbnb-typescript',
+    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    // 'plugin:prettier/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -23,13 +23,6 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        // parser: 'babel-ts',
-      },
-    ],
   },
   settings: {
     react: {
