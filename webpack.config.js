@@ -3,8 +3,8 @@ const childProcess = require('child_process');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const mode = process.env.NODE_ENV || 'development';
 
+const mode = process.env.NODE_ENV || 'development';
 module.exports = {
   mode,
   entry: './src/index.tsx',
