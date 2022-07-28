@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
-    "build": "webpack --progress",
-    "buildPro": "NODE_ENV=production webpack --progress"
+    "start": "webpack serve --progress",
+    "buildDev": "webpack --progress",
+    "build": "NODE_ENV=production webpack --progress"
   },
-  "author": "",
+  "author": "YangUk",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.9",

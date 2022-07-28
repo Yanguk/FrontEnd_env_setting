@@ -19,21 +19,23 @@ module.exports = {
   },
   // Dev-sever
   devServer: {
+    hot: true,
     static: {
       directory: path.join(__dirname, 'public'),
       publicPath: '/',
     },
     client: {
       overlay: true,
-      progress: true,
+      // progress: true,
     },
     port: 8080,
     open: {
       app: {
-        name: 'google-chrome',
+        name: 'Google Chrome',
       },
     },
   },
+
   // Loader
   module: {
     rules: [
@@ -41,6 +43,7 @@ module.exports = {
         // 바벨 및 타입스크립트 로더
         test: /\.[jt]sx?$/,
         exclude: /(node_modules|public)/,
+        include: path.resolve(__dirname, 'src'),
         use: [
           {
             loader: 'babel-loader',
