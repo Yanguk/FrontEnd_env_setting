@@ -5,6 +5,7 @@ const childProcess = require('child_process');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const apiMocker = require('connect-api-mocker');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -29,16 +30,27 @@ module.exports = {
     },
     client: {
       overlay: true,
+      logging: 'error',
       // progress: true,
     },
+    // historyApiFallback: true, // 404 페이지 발견시 홈으로 리다이렉트
     port: 8080,
     open: {
       app: {
         name: 'Google Chrome',
       },
     },
-  },
+    // mock api 만들기
+    setupMiddlewares: (middlewares, devServer) => {
+      if (!devServer) {
+        throw new Error('devServer error');
+      }
 
+      devServer.app.use(apiMocker('/api', '/mocks/api'));
+
+      return middlewares;
+    },
+  },
   // Loader
   module: {
     rules: [
@@ -123,4 +135,7 @@ module.exports = {
     }),
     ...(mode === 'development' ? [new ForkTsCheckerWebpackPlugin()] : []),
   ],
+  // 커스텀 콘솔 및 제거 옵션
+  // infrastructureLogging: { level: 'error' }, // wds 콘솔 제거 실쟁정보들
+  stats: 'errors-only', // 에러만 출력 모듈 및 컴파일 정보 콘솔 제거 //웹팩 4 에서는 dev sever에도 잇엇는데 없어짐
 };
