@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --progress",
-    "buildDev": "webpack --progress",
+    "buildDev": "NODE_ENV=development webpack --progress",
     "build": "NODE_ENV=production webpack --progress"
   },
   "author": "YangUk",
@@ -25,6 +25,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "prettier": "2.7.1",

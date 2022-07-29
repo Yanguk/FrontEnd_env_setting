@@ -20,4 +20,7 @@ function App(): JSX.Element {
   );
 }
 
+console.log(process.env.NODE_ENV);
+console.log('hi');
+
 export default App;

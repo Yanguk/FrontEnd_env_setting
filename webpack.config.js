@@ -1,10 +1,12 @@
 const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const childProcess = require('child_process');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
+
 module.exports = {
   mode,
   entry: './src/index.tsx',
@@ -45,17 +47,31 @@ module.exports = {
         exclude: /(node_modules|public)/,
         include: path.resolve(__dirname, 'src'),
         use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-env',
-                '@babel/preset-typescript',
-                '@babel/preset-react',
-              ],
-            },
-          },
-          'ts-loader',
+          ...(mode === 'production'
+            ? [
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      '@babel/preset-env',
+                      '@babel/preset-react',
+                      '@babel/preset-typescript',
+                    ],
+                  },
+                },
+              ]
+            : []),
+          ...(mode === 'development'
+            ? [
+                {
+                  loader: 'ts-loader',
+                  options: {
+                    transpileOnly: true,
+                    experimentalWatchApi: true,
+                  },
+                },
+              ]
+            : []),
         ],
       },
       {
@@ -104,5 +120,6 @@ module.exports = {
             }
           : false,
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
