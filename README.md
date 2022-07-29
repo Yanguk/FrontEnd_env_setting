@@ -8,8 +8,8 @@
 - 2.React : 라이브러리 React, ReactDom로 CRA 만들기
 - 3.Eslint : 기본셋팅 init 으로 완료
 - 4.prettier : 설치 및 eslint 와 병합하기
+- 5.husky, linst-staged : git hook 으로 커밋전에 eslint 자동 활성화 하기
 
 #### 진행중...
-- 5.husky : git hook 으로 커밋전에 eslint 자동 활성화 하기
 - 6.hot loading, 등등 /// 진행중...;
 - node.js Api 로 webpack 사용하기;
