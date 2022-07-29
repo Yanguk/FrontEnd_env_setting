@@ -1,9 +1,11 @@
 const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const childProcess = require('child_process');
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const mode = process.env.NODE_ENV || 'development';
+
 module.exports = {
   mode,
   entry: './src/app.tsx',
@@ -40,18 +42,32 @@ module.exports = {
         test: /\.[jt]sx?$/,
         exclude: /(node_modules|public)/,
         use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-env',
-                '@babel/preset-typescript',
-                '@babel/preset-react',
+          ...(mode === 'production'
+            ? [
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      '@babel/preset-env',
+                      '@babel/preset-react',
+                      '@babel/preset-typescript',
+                    ],
+                  },
+                },
               ]
-            }
-          },
-          'ts-loader'
-        ]
+            : []),
+          ...(mode === 'development'
+            ? [
+                {
+                  loader: 'ts-loader',
+                  options: {
+                    transpileOnly: true,
+                    experimentalWatchApi: true,
+                  },
+                },
+              ]
+            : []),
+        ],
       },
       { // css 압축 로더
         test: /\.css$/,
@@ -89,10 +105,22 @@ module.exports = {
       templateParameters: {
         env: mode === 'development' ? '(개발용)' : '',
       },
+<<<<<<< HEAD
       minify: mode === 'production' ? {
         collapseWhitespace: true,
         removeComments: true,
       } : false,
     })
+=======
+      minify:
+        mode === 'production'
+          ? {
+              collapseWhitespace: true,
+              removeComments: true,
+            }
+          : false,
+    }),
+    new ForkTsCheckerWebpackPlugin(),
+>>>>>>> 1c66a0e (빌드를 빠르게하기위한 설정)
   ],
 }
