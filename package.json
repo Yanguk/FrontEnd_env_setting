@@ -38,10 +38,7 @@
     "webpack-dev-server": "^4.9.3"
   },
   "lint-staged": {
-    "*.tsx": "eslint ./src/index.tsx",
-    "*.jsx": "eslint ./src/index.tsx",
-    "*.js": "eslint ./src/index.tsx",
-    "*.ts": "eslint ./src/index.tsx"
+    "*.{tsx,ts,js,jsx}": "eslint --fix"
   },
   "dependencies": {
     "@types/react": "^18.0.15",

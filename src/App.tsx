@@ -20,7 +20,10 @@ function App(): JSX.Element {
   );
 }
 
-console.log(process.env.NODE_ENV);
-console.log('hi');
+window.addEventListener('load', async () => {
+  console.log('요청날림');
+  const { data } = await axios.get('/api/users');
+  console.log(data);
+});
 
 export default App;
