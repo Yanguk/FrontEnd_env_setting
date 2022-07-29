@@ -11,10 +11,9 @@
 - 6.dev sever 에서의 가상 Api :
   - devServer.setupMiddleWares 이용하여 api 만들기
   - "connect-api-mocker"
-
 - 7.hot loader 설정 // 리액트 , 타입스크립트의 경우 로더 및 플러그 추가해줘야함
   - "@pmmmwh/react-refresh-webpack-plugin react-refresh"
-  - "react-refresh-typescript"  
+  - "react-refresh-typescript"
 - 번외: node.js Api 로 webpack 사용하기;  
 #### 진행중...
 8. 최적화.. 다이다믹 js 등등
