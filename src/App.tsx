@@ -17,8 +17,8 @@ function App(): JSX.Element {
 }
 
 window.addEventListener('load', async () => {
-  console.log('요청날림')
-  const data = await axios.get('/api/users');
+  console.log('요청날림');
+  const { data } = await axios.get('/api/users');
   console.log(data);
 });
 
