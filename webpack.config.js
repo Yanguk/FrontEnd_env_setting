@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const childProcess = require('child_process');
@@ -120,6 +121,6 @@ module.exports = {
             }
           : false,
     }),
-    new ForkTsCheckerWebpackPlugin(),
+    ...(mode === 'development' ? [new ForkTsCheckerWebpackPlugin()] : []),
   ],
 };
