@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const apiMocker = require('connect-api-mocker');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -51,7 +53,7 @@ module.exports = {
       return middlewares;
     },
   },
-  // Loader
+  // Loader 빌드 하기전 처리과정
   module: {
     rules: [
       {
@@ -69,6 +71,7 @@ module.exports = {
                       '@babel/preset-env',
                       '@babel/preset-react',
                       '@babel/preset-typescript',
+                      'react-refresh/babel',
                     ],
                   },
                 },
@@ -81,6 +84,9 @@ module.exports = {
                   options: {
                     transpileOnly: true,
                     experimentalWatchApi: true,
+                    getCustomTransformers: () => ({
+                      before: [ReactRefreshTypeScript()],
+                    }),
                   },
                 },
               ]
@@ -112,7 +118,7 @@ module.exports = {
       },
     ],
   },
-  // plugins
+  // plugins 빌드후 처리과정
   plugins: [
     new webpack.BannerPlugin(`
       현재시간 : ${new Date().toLocaleString()}
@@ -133,9 +139,12 @@ module.exports = {
             }
           : false,
     }),
-    ...(mode === 'development' ? [new ForkTsCheckerWebpackPlugin()] : []),
+    ...(mode === 'development'
+      ? [new ForkTsCheckerWebpackPlugin(), new ReactRefreshWebpackPlugin()]
+      : []),
+    new ReactRefreshWebpackPlugin(),
   ],
   // 커스텀 콘솔 및 제거 옵션
   // infrastructureLogging: { level: 'error' }, // wds 콘솔 제거 실쟁정보들
-  stats: 'errors-only', // 에러만 출력 모듈 및 컴파일 정보 콘솔 제거 //웹팩 4 에서는 dev sever에도 잇엇는데 없어짐
+  stats: 'errors-only', // 에러만 출력 모듈 및 컴파일 정보 콘솔 제거 //  dev-server 에서는 logging
 };
