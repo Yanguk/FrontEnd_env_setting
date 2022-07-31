@@ -8,8 +8,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const apiMocker = require('connect-api-mocker');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ReactRefreshTypeScript = require('react-refresh-typescript');
+const CleanTerminalPlugin = require('clean-terminal-webpack-plugin');
 
+const HOST = 'localhost';
+const PORT = 8080;
+
+const colorize = (colorNum, output) => `\x1B[${colorNum}m${output}\x1B[0m`;
 const mode = process.env.NODE_ENV || 'development';
+const isDevelopment = mode === 'development';
+const message = colorize(34, `Dev server running on http://${HOST}:${PORT}`);
 
 module.exports = {
   mode,
@@ -97,9 +104,7 @@ module.exports = {
         // css 압축 로더
         test: /\.css$/,
         use: [
-          process.env.NODE_ENV === 'production'
-            ? MiniCssExtractPlugin.loader
-            : 'style-loader',
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       },
@@ -140,9 +145,16 @@ module.exports = {
           : false,
     }),
     ...(mode === 'development'
-      ? [new ForkTsCheckerWebpackPlugin(), new ReactRefreshWebpackPlugin()]
-      : []),
-    new ReactRefreshWebpackPlugin(),
+      ? [
+          new ForkTsCheckerWebpackPlugin(),
+          new ReactRefreshWebpackPlugin(),
+          new CleanTerminalPlugin({
+            message,
+            onlyInWatchMode: false,
+          }),
+          new ReactRefreshWebpackPlugin(),
+        ]
+      : [new MiniCssExtractPlugin()]),
   ],
   // 커스텀 콘솔 및 제거 옵션
   // infrastructureLogging: { level: 'error' }, // wds 콘솔 제거 실쟁정보들

@@ -13,7 +13,10 @@
   - "connect-api-mocker"
 - 7.hot loader 설정 // 리액트 , 타입스크립트의 경우 로더 및 플러그 추가해줘야함
   - "@pmmmwh/react-refresh-webpack-plugin react-refresh"
-  - "react-refresh-typescript"  
+  - "react-refresh-typescript"
+- 8.etc : dev서버 콘솔클리어및 콘솔칼러 메세지 추가  
+  - chalk : commonjs 호환성 문제로 사용하지 못하였음... 커스텀 컬러 함수로 사용
+  - 'clean-terminal-webpack-plugin'
 #
 - 번외: node.js Api 로 webpack 사용하기;  
 
